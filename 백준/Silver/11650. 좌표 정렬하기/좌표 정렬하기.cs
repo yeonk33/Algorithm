@@ -1,4 +1,6 @@
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
 int coordinateNum = Convert.ToInt32(Console.ReadLine());
 List<int[]> coordinates = new List<int[]>();
 for (int i = 0; i < coordinateNum; i++) {
@@ -9,4 +11,8 @@ for (int i = 0; i < coordinateNum; i++) {
 
 // 정렬
 var temp = coordinates.OrderBy(c => c[0]).ThenBy(c=>c[1]).ToList<int[]>();
-Console.WriteLine(string.Join("\n",temp.Select(c => string.Join(" ", c))));
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < coordinateNum; i++) {
+	sb.AppendLine($"{temp[i][0]} {temp[i][1]}");
+}
+System.Console.WriteLine(sb.ToString());
